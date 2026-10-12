@@ -3,7 +3,7 @@
 
     python scripts/build.py
 
-No dependencies. Everything is hand-drawn SVG + CSS/SMIL animation, so the
+No dependencies: every graphic is plain SVG with CSS/SMIL animation, so the
 README needs no third-party image services to render.
 """
 import html
