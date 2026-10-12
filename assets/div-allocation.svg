@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 34" width="1200" height="34" role="img" aria-label="ALLOCATION: BYTES OF CODE / PUBLIC REPOS"><style>
+text{font-family:ui-monospace,'SF Mono','Cascadia Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace}
+@keyframes on{from{opacity:0}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style><defs></defs><rect x="2" y="12" width="9" height="9" fill="#ffb21a"/><text x="22" y="22" font-size="14" fill="#ffb21a" font-weight="700" text-anchor="start" textLength="84.0" lengthAdjust="spacingAndGlyphs" >ALLOCATION</text><line x1="118.0" x2="967.6" y1="17" y2="17" stroke="#6b7a73" stroke-width="1" stroke-dasharray="2 5"/><text x="1198" y="22" font-size="13" fill="#6b7a73" font-weight="400" text-anchor="end" textLength="218.4" lengthAdjust="spacingAndGlyphs" >BYTES OF CODE / PUBLIC REPOS</text></svg>

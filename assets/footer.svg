@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 64" width="1200" height="64" role="img" aria-label="End of tape"><style>
+text{font-family:ui-monospace,'SF Mono','Cascadia Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace}
+@keyframes on{from{opacity:0}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+.tr{stroke-dasharray:1;animation:tr 7s linear infinite}@keyframes tr{0%{stroke-dashoffset:1}70%,100%{stroke-dashoffset:0}}</style><defs></defs><path d="M0,34 H430 l10,-6 l10,12 l10,-22 l12,30 l10,-18 l8,4 H740 l10,-8 l10,14 l10,-20 l12,24 l10,-12 l8,2 H1200" fill="none" stroke="#1e2824" stroke-width="1.5"/><path class="tr" pathLength="1" d="M0,34 H430 l10,-6 l10,12 l10,-22 l12,30 l10,-18 l8,4 H740 l10,-8 l10,14 l10,-20 l12,24 l10,-12 l8,2 H1200" fill="none" stroke="#ffb21a" stroke-width="1.5"/><rect x="522.0" y="22" width="156" height="24" rx="12" fill="#0a0d0c" stroke="#1e2824"/><text x="600.0" y="39" font-size="13" fill="#ffb21a" font-weight="700" text-anchor="middle" textLength="85.8" lengthAdjust="spacingAndGlyphs" >END OF TAPE</text></svg>
