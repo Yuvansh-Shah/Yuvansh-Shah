@@ -105,11 +105,11 @@ GLYPH = {
     "H": "10001 10001 10001 11111 10001 10001 10001",
 }
 PHRASES = [
-    "running 20 paper-trading bots on free GitHub Actions compute",
-    "training a GPT-style decoder from scratch in PyTorch",
-    "measuring how LLMs answer the same question in a different dialect",
-    "shipping apps in Flutter, Next.js, Electron and React Native",
-    "dictating code with Whisper running on a local GPU",
+    "orchestrating 20 systematic trading strategies on GitHub Actions",
+    "training a 35.5M-parameter transformer from scratch in PyTorch",
+    "quantifying dialect-induced response drift across 3 LLMs",
+    "engineering cross-platform apps in Flutter, Next.js and React Native",
+    "building on-device speech-to-text with GPU-accelerated Whisper",
 ]
 
 
@@ -230,9 +230,11 @@ def hero():
 
 
 # ticker ------------------------------------------------------------------------
-TAPE = [("ALGO", "20 paper bots"), ("DBLM", "936 API calls"), ("RPLM", "GPT from scratch"),
-        ("JQST", "Flutter + Firebase"), ("JQWB", "Next.js + Workers"), ("FLOW", "Whisper on GPU"),
-        ("SATF", "adaptive mocks"), ("TTRB", "robot drills"), ("EYEC", "AI front desk")]
+TAPE = [("ALGO", "20 systematic strategies"), ("DBLM", "936-call controlled study"),
+        ("RPLM", "35.5M-param transformer"), ("JQST", "Flutter + Riverpod"),
+        ("JQWB", "Next.js 16 + edge proxy"), ("FLOW", "on-device ASR"),
+        ("SATF", "adaptive test engine"), ("TTRB", "BLE-ready drill engine"),
+        ("EYEC", "tool-calling LLM agent")]
 
 
 def ticker():
@@ -413,36 +415,36 @@ def m_sheet():
 
 CARDS = [
     ("dialect", "DBLM", "dialect-bias-llm", "Python", m_dialect,
-     "52 questions asked twice, in Standard American English and in dialect, to 3 LLMs. "
-     "Same meaning, shorter answers.", ["research", "llm-eval", "scipy"]),
+     "Controlled study of dialect sensitivity in 3 LLMs: 52 paired prompts, 936 API calls, "
+     "Bonferroni-corrected tests.", ["llm-evaluation", "statistics", "scipy"]),
     ("gpt", "RPLM", "research-paper-llm", "Python", m_gpt,
-     "A GPT-style decoder built from scratch in PyTorch, trained on DBLP + arXiv paper metadata.",
-     ["pytorch", "transformer", "from-scratch"]),
+     "35.5M-parameter decoder-only transformer built from scratch in PyTorch. 2.7M arXiv "
+     "abstracts, validation perplexity 21.6.", ["pytorch", "byte-level-bpe", "transformer"]),
     ("jainquest", "JQST", "JainQuest", "Dart", m_path,
-     "Mobile app for learning Jain philosophy through gamified lessons.",
-     ["flutter", "firebase", "gemini"]),
+     "Cross-platform learning app with a gamified lesson engine: XP, streaks and hearts "
+     "synced via Firestore, plus a Gemini tutor.", ["flutter", "riverpod", "firestore"]),
     ("jainquest-web", "JQWB", "jainquest-web", "TypeScript", m_chat,
-     "The web edition. Next.js and Firebase, with AI chat served through a Cloudflare Worker.",
-     ["nextjs", "firebase", "workers"]),
+     "Statically exported Next.js 16 client on a shared Firestore backend. LLM chat is "
+     "proxied through a Cloudflare Worker.", ["nextjs", "firestore", "cloudflare-workers"]),
     ("flowlite", "FLOW", "flowlite", "Python", m_wave,
-     "Local Windows dictation. Whisper on the GPU, then a local LLM cleans up the transcript.",
-     ["whisper", "ollama", "pyqt6"]),
+     "Fully on-device dictation for Windows: CUDA-accelerated faster-whisper inference "
+     "with a local LLM post-processing pass.", ["faster-whisper", "ctranslate2", "ollama"]),
     ("satforge", "SATF", "satforge", "TypeScript", m_sheet,
-     "Offline Digital SAT trainer with adaptive and full-length mock exams.",
-     ["electron", "react", "vite"]),
+     "Offline Digital SAT simulator with an adaptive difficulty engine, 98-question timed "
+     "mocks and scaled-score estimation.", ["electron", "react", "zustand"]),
     ("tt-robot", "TTRB", "tt-robot-app", "TypeScript", m_pong,
-     "Control app for a table-tennis training robot: drills, live sessions, stats.",
-     ["expo", "react-native", "bluetooth"]),
+     "Drill sequencer and live-session controller for a table-tennis robot, behind a "
+     "hardware abstraction layer ready for BLE.", ["expo", "react-native", "ble"]),
     ("eye-care", "EYEC", "sadhana-eye-care", "TypeScript", m_eye,
-     "Eye-clinic site with an AI assistant that answers questions and books appointments.",
-     ["nextjs", "llm", "netlify"]),
+     "Next.js clinic platform with a tool-calling Llama 3.3 70B agent that answers patient "
+     "queries and books appointments.", ["nextjs", "tool-calling", "llama-3.3"]),
 ]
 
 
 def card(sym, name, lang, motif, desc, tags):
     W, H = 600, 236
     lines = textwrap.wrap(desc, 42)
-    assert len(lines) <= 3, (name, lines)
+    assert len(lines) <= 4, (name, lines)
     art, css = motif()
     lw = tw(lang, 13)
     body = (f'<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="12" fill="{PANEL}" stroke="{LINE}"/>'
@@ -465,9 +467,9 @@ BOTS = ["orb_breakout", "vwap_pullback", "vwap_reversion", "ema_crossover", "sup
 
 def feature():
     W, H = 1200, 268
-    desc = ("An arena of 20 paper-trading bots on NSE. A cron ping wakes GitHub Actions every "
-            "5 minutes in market hours, the engine runs every strategy, and the leaderboard "
-            "commits itself back to the repo. The laptop can stay off.")
+    desc = ("Event-driven engine running 20 systematic strategies on NSE equities. A scheduled "
+            "GitHub Actions pipeline ticks every 5 minutes, simulates fills with stops, targets "
+            "and trailing exits, and version-controls portfolio state.")
     lines = textwrap.wrap(desc, 57)
     assert len(lines) <= 4, lines
     cds, (lx, ly) = candles(30, 620, 930, 60, 214, seed=5, cls="fc", step=0.16, drift=1.6)
@@ -490,13 +492,13 @@ def feature():
             + mono(36 + tw("ALGO", 34) + 40, 58, "FEATURED LISTING", 12, DIM)
             + mono(36, 94, "algo-trading-platform", 19, TEXT, 700)
             + "".join(mono(36, 126 + i * 23, ln, 15.5, MID) for i, ln in enumerate(lines))
-            + chips(36, 222, ["python", "github-actions", "paper-trading", "backtests"], 12.5)
+            + chips(36, 222, ["python", "github-actions", "paper-trading", "backtesting"], 12.5)
             + f'<line x1="600" x2="600" y1="28" y2="{H - 28}" stroke="{LINE}"/>'
             + mono(620, 44, "NSE / 15m", 12, DIM)
             + cds
             + f'<circle class="dot" cx="{lx}" cy="{ly}" r="4" fill="{AMBER}"/>'
             + f'<line x1="946" x2="946" y1="28" y2="{H - 28}" stroke="{LINE}"/>'
-            + mono(970, 44, "20 BOTS IN THE ARENA", 12, DIM)
+            + mono(970, 44, "20 STRATEGIES DEPLOYED", 12, DIM)
             + f'<g clip-path="url(#bots)"><g transform="translate(0 62)"><g class="roll">{lst}'
               f'<g transform="translate(0 {Lh})">{lst}</g></g></g>'
               f'<rect x="960" y="62" width="216" height="158" fill="url(#fd)"/></g>'
