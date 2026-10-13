@@ -25,8 +25,8 @@ LANG_COLOR = {"Python": AMBER, "TypeScript": BLUE, "Dart": GREEN,
               "JavaScript": PURPLE, "HTML": RED, "Other": GREY}
 
 # bytes of code per language across the public repos (GitHub linguist snapshot)
-LANG_BYTES = {"Dart": 859454, "TypeScript": 791046, "Python": 581084,
-              "JavaScript": 392700, "HTML": 132493, "Other": 78155}
+LANG_BYTES = {"TypeScript": 1199145, "Dart": 859454, "Python": 812879,
+              "HTML": 555050, "JavaScript": 416847, "Other": 245385}
 
 BASE_CSS = f"""
 text{{font-family:{FONT}}}
@@ -110,6 +110,7 @@ PHRASES = [
     "quantifying dialect-induced response drift across 3 LLMs",
     "engineering cross-platform apps in Flutter, Next.js and React Native",
     "building on-device speech-to-text with GPU-accelerated Whisper",
+    "catching printed and replayed faces with a 4.2M-parameter liveness model",
 ]
 
 
@@ -190,7 +191,7 @@ def hero():
              + mono(W - 56, ly + 4.5, "LAST", 12, BG, 700, "middle"))
 
     # footer strip
-    cells = [("LISTED", "9 public repos"), ("MAIN STACK", "Python / TypeScript / Dart"),
+    cells = [("LISTED", "12 public repos"), ("MAIN STACK", "Python / TypeScript / Dart"),
              ("ON GITHUB SINCE", "2024")]
     strip = f'<line x1="0" x2="{W}" y1="382" y2="382" stroke="{LINE}"/>'
     x = 40
@@ -234,7 +235,8 @@ TAPE = [("ALGO", "20 systematic strategies"), ("DBLM", "936-call controlled stud
         ("RPLM", "35.5M-param transformer"), ("JQST", "Flutter + Riverpod"),
         ("JQWB", "Next.js 16 + edge proxy"), ("FLOW", "on-device ASR"),
         ("SATF", "adaptive test engine"), ("TTRB", "BLE-ready drill engine"),
-        ("EYEC", "tool-calling LLM agent")]
+        ("EYEC", "tool-calling LLM agent"), ("GROK", "36-run preregistered test"),
+        ("LIVE", "98.6% anti-spoof accuracy"), ("AYSH", "28,890 hospitals indexed")]
 
 
 def ticker():
@@ -413,19 +415,103 @@ def m_sheet():
     return s, css
 
 
+def m_care():
+    s = "".join(f'<line x1="{x}" x2="{x}" y1="4" y2="116" stroke="{LINE}"/>' for x in (30, 76, 122))
+    s += "".join(f'<line x1="2" x2="150" y1="{y}" y2="{y}" stroke="{LINE}"/>' for y in (32, 68, 102))
+    s += f'<path d="M2,88 C40,70 60,96 96,74 S140,52 150,58" fill="none" stroke="{LINE}" stroke-width="5"/>'
+    for i, (x, y) in enumerate(((22, 20), (118, 26), (46, 92), (128, 96))):
+        s += (f'<g class="hs" style="animation-delay:{0.3 + i * 0.35:.2f}s">'
+              f'<rect x="{x - 8}" y="{y - 8}" width="16" height="16" rx="4" fill="{PANEL}" stroke="{MID}" stroke-width="1.3"/>'
+              f'<path d="M{x},{y - 4} v8 M{x - 4},{y} h8" stroke="{MID}" stroke-width="2" stroke-linecap="round"/></g>')
+    s += (f'<g class="pin"><path d="M76,66 C64,50 62,44 62,38 a14,14 0 1 1 28,0 C90,44 88,50 76,66 Z" fill="{AMBER}"/>'
+          f'<circle cx="76" cy="38" r="5" fill="{PANEL}"/></g>'
+          f'<g class="pay"><rect x="96" y="56" width="52" height="24" rx="12" fill="{GREEN}"/>'
+          + mono(122, 73, "PAY 0", 13, BG, 700, "middle") + "</g>")
+    css = (".hs{transform-box:fill-box;transform-origin:center;animation:hs 7s ease-out infinite both}"
+           "@keyframes hs{0%{transform:scale(0)}5%{transform:scale(1.2)}8%,100%{transform:scale(1)}}"
+           ".pin{animation:pin 7s cubic-bezier(.3,1.4,.5,1) infinite both}"
+           "@keyframes pin{0%,24%{transform:translateY(-70px);opacity:0}34%,100%{transform:translateY(0);opacity:1}}"
+           ".pay{transform-box:fill-box;transform-origin:left center;animation:pay 7s ease-out infinite both}"
+           "@keyframes pay{0%,44%{transform:scale(0)}50%,100%{transform:scale(1)}}")
+    return s, css
+
+
+def m_face():
+    s = "".join(f'<path d="M{x},{y + dy * 14} v{-dy * 14} h{dx * 14}" fill="none" stroke="{AMBER}" stroke-width="2"/>'
+                for x, y, dx, dy in ((30, 4, 1, 1), (122, 4, -1, 1), (30, 92, 1, -1), (122, 92, -1, -1)))
+    s += (f'<ellipse cx="76" cy="46" rx="25" ry="31" fill="none" stroke="{TEXT}" stroke-width="1.6"/>'
+          f'<circle cx="66" cy="40" r="2.6" fill="{TEXT}"/><circle cx="86" cy="40" r="2.6" fill="{TEXT}"/>'
+          f'<path d="M66,58 q10,8 20,0" fill="none" stroke="{TEXT}" stroke-width="1.6" stroke-linecap="round"/>'
+          f'<line class="scan" x1="32" x2="120" y1="8" y2="8" stroke="{AMBER}" stroke-width="2" opacity=".85"/>'
+          f'<g class="va"><rect x="34" y="100" width="84" height="20" rx="10" fill="{GREEN}"/>'
+          + mono(76, 114.5, "LIVE 0.99", 12, BG, 700, "middle") + "</g>"
+          + f'<g class="vb"><rect x="34" y="100" width="84" height="20" rx="10" fill="{RED}"/>'
+          + mono(76, 114.5, "SPOOF 0.98", 12, BG, 700, "middle") + "</g>")
+    css = (".scan{animation:scan 4s ease-in-out infinite}"
+           "@keyframes scan{0%,100%{transform:translateY(0)}50%{transform:translateY(80px)}}"
+           ".va,.vb{animation:va 8s steps(1) infinite}.vb{animation-name:vb}"
+           "@keyframes va{0%{opacity:0}22%{opacity:1}50%,100%{opacity:0}}"
+           "@keyframes vb{0%,72%{opacity:0}72.1%,100%{opacity:1}}")
+    return s, css
+
+
+def m_lock():
+    s = ""
+    for i, x in enumerate((44, 108)):
+        s += (f'<g class="lk" style="animation-delay:{i * 0.6:.1f}s">'
+              f'<path d="M{x - 13},52 v-14 a13,13 0 0 1 26,0 v14" fill="none" stroke="{MID}" stroke-width="3"/>'
+              f'<rect x="{x - 21}" y="52" width="42" height="34" rx="6" fill="{PANEL}" stroke="{AMBER}" stroke-width="1.8"/>'
+              f'<circle cx="{x}" cy="66" r="4" fill="{AMBER}"/>'
+              f'<line x1="{x}" x2="{x}" y1="68" y2="77" stroke="{AMBER}" stroke-width="3" stroke-linecap="round"/></g>')
+    css = (".lk{animation:lk 3.6s ease-in-out infinite}"
+           "@keyframes lk{0%,100%{opacity:1}50%{opacity:.45}}")
+    return s, css
+
+
+def m_grok():
+    s = (f'<path d="M6,4 V108 H150" fill="none" stroke="{LINE}" stroke-width="1.5"/>'
+         f'<path class="gk" pathLength="1" d="M8,102 C15,60 20,17 34,15 H148" fill="none" stroke="{AMBER}" '
+         f'stroke-width="2" stroke-linecap="round"/>'
+         f'<path class="gk gv" pathLength="1" d="M8,104 H88 C98,104 100,19 112,17 H148" fill="none" '
+         f'stroke="{GREEN}" stroke-width="2" stroke-linecap="round"/>'
+         f'<path class="gd" d="M36,62 H100 M36,57 v10 M100,57 v10" fill="none" stroke="{MID}" stroke-width="1.2"/>'
+         + mono(68, 52, "delay", 11, MID, 400, "middle", 'class="gd"')
+         + mono(146, 34, "train", 10, AMBER, 400, "end") + mono(146, 98, "val", 10, GREEN, 400, "end"))
+    css = (".gk{stroke-dasharray:1;animation:gk 7s ease-in-out infinite both}"
+           "@keyframes gk{0%{stroke-dashoffset:1}22%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}"
+           ".gv{animation-name:gv}"
+           "@keyframes gv{0%,8%{stroke-dashoffset:1}60%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}"
+           ".gd{animation:gd 7s ease-in-out infinite both}"
+           "@keyframes gd{0%,58%{opacity:0}66%,92%{opacity:1}100%{opacity:0}}")
+    return s, css
+
+
 CARDS = [
     ("dialect", "DBLM", "dialect-bias-llm", "Python", m_dialect,
      "Controlled study of dialect sensitivity in 3 LLMs: 52 paired prompts, 936 API calls, "
      "Bonferroni-corrected tests.", ["llm-evaluation", "statistics", "scipy"]),
+    ("grokking", "GROK", "grokking-delay-law-fraction-test", "Python", m_grok,
+     "Pre-registered replication of a published grokking-delay law: it reproduces on its own "
+     "axis (19.9% error) and fails across training fraction (53.1%).",
+     ["pytorch", "preregistered", "replication"]),
     ("gpt", "RPLM", "research-paper-llm", "Python", m_gpt,
      "35.5M-parameter decoder-only transformer built from scratch in PyTorch. 2.7M arXiv "
      "abstracts, validation perplexity 21.6.", ["pytorch", "byte-level-bpe", "transformer"]),
+    ("liveness", "LIVE", "passive-face-liveness-detection", "Python", m_face,
+     "Single-frame face anti-spoofing: MobileNetV3 with YuNet detection flags printed and "
+     "screen-replayed photos at 98.6% accuracy, 0.9985 ROC-AUC.", ["pytorch", "timm", "fastapi"]),
     ("jainquest", "JQST", "JainQuest", "Dart", m_path,
      "Cross-platform learning app with a gamified lesson engine: XP, streaks and hearts "
      "synced via Firestore, plus a Gemini tutor.", ["flutter", "riverpod", "firestore"]),
     ("jainquest-web", "JQWB", "jainquest-web", "TypeScript", m_chat,
      "Statically exported Next.js 16 client on a shared Firestore backend. LLM chat is "
      "proxied through a Cloudflare Worker.", ["nextjs", "firestore", "cloudflare-workers"]),
+    ("ayushman", "AYSH", "ayushman-saathi", "TypeScript", m_care,
+     "Multilingual PWA for Ayushman Bharat PM-JAY: describe a treatment in plain words and "
+     "get nearby empanelled hospitals from 28,890 listed.", ["react-19", "pwa", "leaflet"]),
+    ("eye-care", "EYEC", "sadhana-eye-care", "TypeScript", m_eye,
+     "Next.js clinic platform with a tool-calling Llama 3.3 70B agent that answers patient "
+     "queries and books appointments.", ["nextjs", "tool-calling", "llama-3.3"]),
     ("flowlite", "FLOW", "flowlite", "Python", m_wave,
      "Fully on-device dictation for Windows: CUDA-accelerated faster-whisper inference "
      "with a local LLM post-processing pass.", ["faster-whisper", "ctranslate2", "ollama"]),
@@ -435,9 +521,9 @@ CARDS = [
     ("tt-robot", "TTRB", "tt-robot-app", "TypeScript", m_pong,
      "Drill sequencer and live-session controller for a table-tennis robot, behind a "
      "hardware abstraction layer ready for BLE.", ["expo", "react-native", "ble"]),
-    ("eye-care", "EYEC", "sadhana-eye-care", "TypeScript", m_eye,
-     "Next.js clinic platform with a tool-calling Llama 3.3 70B agent that answers patient "
-     "queries and books appointments.", ["nextjs", "tool-calling", "llama-3.3"]),
+    ("pending", "+2", "listing pending", None, m_lock,
+     "Two research projects are private for now and will be listed here once they can be "
+     "public.", ["research", "private"]),
 ]
 
 
@@ -446,11 +532,11 @@ def card(sym, name, lang, motif, desc, tags):
     lines = textwrap.wrap(desc, 42)
     assert len(lines) <= 4, (name, lines)
     art, css = motif()
-    lw = tw(lang, 13)
+    lw = tw(lang or "", 13)
     body = (f'<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="12" fill="{PANEL}" stroke="{LINE}"/>'
             + mono(28, 48, sym, 27, AMBER, 700) + tri(28 + tw(sym, 27) + 14, 37, 6)
-            + f'<circle cx="{W - 34 - lw}" cy="38.5" r="4.5" fill="{LANG_COLOR[lang]}"/>'
-            + mono(W - 26, 43, lang, 13, MID, 400, "end")
+            + (f'<circle cx="{W - 34 - lw}" cy="38.5" r="4.5" fill="{LANG_COLOR[lang]}"/>'
+               + mono(W - 26, 43, lang, 13, MID, 400, "end") if lang else "")
             + mono(28, 78, name, 17, TEXT, 700)
             + "".join(mono(28, 107 + i * 21, ln, 14.5, MID) for i, ln in enumerate(lines))
             + chips(28, 188, tags)
@@ -547,7 +633,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     files = {
         "hero.svg": hero(), "ticker.svg": ticker(), "footer.svg": footer(),
-        "div-listings.svg": divider("LISTINGS", "9 SYMBOLS / CLICK TO OPEN"),
+        "div-listings.svg": divider("LISTINGS", "12 SYMBOLS / CLICK TO OPEN"),
         "div-allocation.svg": divider("ALLOCATION", "BYTES OF CODE / PUBLIC REPOS"),
         "card-algo.svg": feature(), "allocation.svg": allocation(),
     }
